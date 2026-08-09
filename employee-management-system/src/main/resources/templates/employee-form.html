@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Employee Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand">👨‍💼 Employee Management</div>
+    <a class="btn secondary" th:href="@{/employees}">
+        Back
+    </a>
+</nav>
+
+<main class="form-container">
+
+    <div class="card">
+
+        <h1 th:text="${pageTitle}">Add Employee</h1>
+
+        <form
+                th:action="@{/employees/save}"
+                th:object="${employee}"
+                method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-grid">
+
+                <div>
+                    <label>First Name</label>
+                    <input
+                            type="text"
+                            th:field="*{firstName}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{firstName}"></small>
+                </div>
+
+                <div>
+                    <label>Last Name</label>
+                    <input
+                            type="text"
+                            th:field="*{lastName}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{lastName}"></small>
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input
+                            type="email"
+                            th:field="*{email}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{email}"></small>
+                </div>
+
+                <div>
+                    <label>Phone</label>
+                    <input
+                            type="text"
+                            th:field="*{phone}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{phone}"></small>
+                </div>
+
+                <div>
+                    <label>Department</label>
+                    <select th:field="*{department}" required>
+                        <option value="">Select Department</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Operations">Operations</option>
+                    </select>
+                    <small class="field-error"
+                           th:errors="*{department}"></small>
+                </div>
+
+                <div>
+                    <label>Designation</label>
+                    <input
+                            type="text"
+                            th:field="*{designation}"
+                            placeholder="Software Developer"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{designation}"></small>
+                </div>
+
+                <div>
+                    <label>Salary</label>
+                    <input
+                            type="number"
+                            step="0.01"
+                            min="0"
+                            th:field="*{salary}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{salary}"></small>
+                </div>
+
+                <div>
+                    <label>Joining Date</label>
+                    <input
+                            type="date"
+                            th:field="*{joiningDate}"
+                            required>
+                    <small class="field-error"
+                           th:errors="*{joiningDate}"></small>
+                </div>
+
+            </div>
+
+            <label class="checkbox-label">
+                <input
+                        type="checkbox"
+                        th:field="*{active}">
+                Active Employee
+            </label>
+
+            <button
+                    class="btn primary full"
+                    type="submit">
+                Save Employee
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+</html>

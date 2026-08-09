@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand">👨‍💼 Employee Management</div>
+    <a class="btn secondary" th:href="@{/employees}">
+        Back
+    </a>
+</nav>
+
+<main class="form-container">
+
+    <div class="card">
+
+        <h1>Employee Details</h1>
+
+        <div class="details-grid">
+
+            <div>
+                <span class="detail-label">Employee ID</span>
+                <strong th:text="${employee.id}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Full Name</span>
+                <strong th:text="${employee.fullName}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Email</span>
+                <strong th:text="${employee.email}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Phone</span>
+                <strong th:text="${employee.phone}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Department</span>
+                <strong th:text="${employee.department}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Designation</span>
+                <strong th:text="${employee.designation}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Salary</span>
+                <strong>₹<span th:text="${employee.salary}"></span></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Joining Date</span>
+                <strong th:text="${employee.joiningDate}"></strong>
+            </div>
+
+            <div>
+                <span class="detail-label">Status</span>
+
+                <strong
+                        class="status active"
+                        th:if="${employee.active}">
+                    Active
+                </strong>
+
+                <strong
+                        class="status inactive"
+                        th:unless="${employee.active}">
+                    Inactive
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="actions detail-actions">
+            <a
+                    class="btn primary"
+                    th:href="@{/employees/edit/{id}(id=${employee.id})}">
+                Edit Employee
+            </a>
+
+            <a
+                    class="btn secondary"
+                    th:href="@{/employees}">
+                Back to Employees
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>
